@@ -11,7 +11,7 @@ expdir="$sourcedir/.."
 indir="$expdir/../Data/SoNaR1-NAF"
 golddir="$expdir/../Data/SoNaR1-CoNLL-filled-uniqueyfied"
 
-naf2conlldir=~/repos/FormatConversions/naf2conll
+formatconversionsdir=~/repos/FormatConversions
 scorerdir=~/repos/reference-coreference-scorers
 
 
@@ -54,7 +54,7 @@ golddir="`realpath "$golddir"`" || exit 1
 
 # It's okay if the following directories don't exist, but then the following
 # commands crash.
-# naf2conlldir="`realpath "$naf2conlldir"`" || exit 1
+# formatconversionsdir="`realpath "$formatconversionsdir"`" || exit 1
 # scorerdir="`realpath "$scorerdir"`" || exit 1
 
 # Derived names
@@ -67,6 +67,7 @@ resultsfile="$outdir/results.txt"
 skippedlog="$outdir/skipped_files.txt"
 infileslog="$outdir/input_files.txt"
 expenv="$expdir/$tag-env"
+naf2conlldir="$formatconversionsdir/naf2conll"
 naf2conllenv="$naf2conlldir/env"
 
 # Data problems (for details, see:

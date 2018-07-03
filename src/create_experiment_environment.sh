@@ -28,8 +28,11 @@ fi
 # naf2conll code
 if [ ! -d "$naf2conlldir" ]; then
     echo Downloading NAF to CoNLL converter from $formatconversionsrepo...
-    formatconversionsdir="`dirname "$naf2conlldir"`" || exit 1
     git clone --quiet "$formatconversionsrepo" "$formatconversionsdir" || exit 1
+fi
+if [ ! -d "$naf2conlldir" ]; then
+    errcho ERROR: Failed to download the code for NAF2CoNLL conversion.
+    errcho $naf2conll is probably not a direct child of $formatconversionsdir
 fi
 
 # naf2conll environment
