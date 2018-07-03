@@ -21,6 +21,8 @@ fi
 "$sourcedir/create_experiment_environment.sh" "$tag" || exit 1
 
 # Create the output directory
+# This is done after `create_experiment_environment.sh` because it verifies
+# the tag
 mkdir "$outdir" "$nafdir" "$conlldir" || exit 1
 
 echo Collecting input files...
