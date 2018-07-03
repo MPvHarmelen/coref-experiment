@@ -5,7 +5,7 @@ errcho(){ >&2 echo $@; }
 activate(){ source "$1/bin/activate"; }
 
 # Directory configuration
-sourcedir="`dirname "$0"`" || exit 1
+sourcedir="$(realpath `dirname "$0"`)" || exit 1
 
 expdir="$sourcedir/../../../../Experiments"
 indir="$expdir/../Data/SoNaR1-NAF"
