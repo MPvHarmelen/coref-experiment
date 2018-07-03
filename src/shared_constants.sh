@@ -8,6 +8,7 @@ activate(){ source "$1/bin/activate"; }
 sourcedir="$(realpath `dirname "$0"`)" || exit 1
 
 expdir="$sourcedir/../../../../Experiments"
+configdir="$sourcedir/../config"
 indir="$expdir/../Data/SoNaR1-NAF"
 golddir="$expdir/../Data/SoNaR1-CoNLL-filled-uniqueyfied"
 
@@ -32,6 +33,9 @@ if [[ -z "$tag" ]]; then
     exit 1
 fi
 
+# Script configuration
+naf2conllconfig="$configdir/$tag-naf2conll-config.yml"
+msc_args_file="$configdir/$tag-multisieve_coreference-args.txt"
 verifygold=no
 # verifygold=yes
 
@@ -41,6 +45,7 @@ scorerrepo=git@github.com:conll/reference-coreference-scorers.git
 scorertag=v8.01
 formatconversionsrepo=git@github.com:cltl/FormatConversions
 
+# Logging
 # loglevel=INFO
 loglevel=WARNING
 scorerverbosity=1

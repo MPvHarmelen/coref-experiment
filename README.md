@@ -27,8 +27,15 @@ Every script `source`s `shared_constants.sh` for the configuration and `run.sh` 
      + are not listed in `$ignoredfiles` in `shared_constants.sh`
      + exist and are not empty
      + have a corresponding gold file that exists and is not empty
- 0. `experiment_only.sh` reads the NAF files from `$infileslog` and runs [coref_draft][] and [naf2conll][] on each of them. The output NAF files are saved in `$nafdir` and the converted CoNLL files are saved in `$conlldir`.
- 0. if `$verifygold` is `yes`, `verify_gold.sh` is invoked to run the [CoNLL scorer][] with the gold data as both gold and system response. If there are documents that do not score 100%, they are reported and the experiment is stopped. By default `$verifygold` is `no`, but the development set in `shared_constants.sh` has been verified.
+ 0. `experiment_only.sh` reads the NAF files from `$infileslog` and
+    runs [coref_draft][] (with command line arguments from `$msc_args_file`)
+    and [naf2conll][] (with configuration file `$naf2conllconfig`)
+    on each of them.
+    The output NAF files are saved in `$nafdir`
+    and the converted CoNLL files are saved in `$conlldir`.
+ 0. if `$verifygold` is `yes`, `verify_gold.sh` is invoked to run the [CoNLL scorer][] with the gold data as both gold and system response.
+    If there are documents that do not score 100%, they are reported and the experiment is stopped.
+    By default `$verifygold` is `no`, but all documents that are not in `$ignoredfiles` in `shared_constants.sh` have been verified.
  0. `aggregate_output.sh` copies the content of all files in `$conlldir` into a single file `$outfile`.
  0. `evaluate.sh` runs the [CoNLL scorer][] and saves the output to `$resultsfile`.
 

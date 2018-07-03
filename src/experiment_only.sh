@@ -22,10 +22,10 @@ for filename in `cat "$infileslog"`; do
     let progress++
     echo $progress / $ninfiles: Calculating coreferences for $filename...
     activate "$expenv" || exit 1
-    cat "$indir/$filename" | python -m multisieve_coreference -l $loglevel > "$nafdir/$filename" || exit 1
+    cat "$indir/$filename" | python -m multisieve_coreference -l $loglevel  `cat "$msc_args_file" 2> /dev/null` > "$nafdir/$filename" || exit 1
     deactivate
     conllout=$conlldir/${filename%.naf}.conll
     activate "$naf2conllenv" || exit 1
-    python -m naf2conll -c fill_config.yml "$conllout" "$nafdir/$filename" -l $loglevel || exit 1
+    python -m naf2conll -c "$naf2conllconfig" "$conllout" "$nafdir/$filename" -l $loglevel || exit 1
     deactivate
 done
