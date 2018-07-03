@@ -178,9 +178,8 @@ for filename in $allfiles; do
 
     # Add it to the input list
     else
-        cat "$conllfile" 2> /dev/null >> "$goldfile" \
+        cat "$conllfile" >> "$goldfile" \
             && keepfile "$filename" \
-            || skipfile "$filename" \
             || exit 1
     fi
 done
