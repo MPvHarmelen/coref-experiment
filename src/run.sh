@@ -18,10 +18,10 @@ if [ -d "$outdir" ]; then
     exit 1
 fi
 
-"$sourcedir/create_experiment_environment.sh" "$tag" || exit 1
+"$sourcedir/create_environment.sh" "$tag" || exit 1
 
 # Create the output directory
-# This is done after `create_experiment_environment.sh` because it verifies
+# This is done after `create_environment.sh` because it verifies
 # the tag
 mkdir "$outdir" "$nafdir" "$conlldir" || exit 1
 

@@ -19,7 +19,7 @@ You can run separate parts of the experiment manually by calling the script that
 # What it does
 Every script `source`s `shared_constants.sh` for the configuration and `run.sh` orchestrates everything. If the output directory does not exist, `run.sh` creates it and otherwise exits to prevent overwriting a previous experiment. Then it calls the following scripts in the order listed:
 
- 0. `create_experiment_environment.sh` verifies the tag, downloads all the necessary code and creates the necessary virtual environments:
+ 0. `create_environment.sh` verifies the tag, downloads all the necessary code and creates the necessary virtual environments:
      + environment for [coref_draft][] that implicitly downloads the code from Github
      + code and environment for [naf2conll][]
      + code for the [CoNLL scorer][]
