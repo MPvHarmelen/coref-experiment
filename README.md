@@ -27,6 +27,12 @@ Run `src/run.sh <tag>` to run an experiment with the version of the code tagged 
 
 You can run separate parts of the experiment manually by calling the script that does it.
 
+# Data Selection
+`$allfiles` in `collect_data.sh` determines which files are considered as input data. By default a development set of 103 random files from SoNar-1 are used, but you can use all data by commenting the lines with the 103 files and uncommenting the following line:
+
+    allfiles=`ls "$indir"`
+
+
 # What it does
 Every script `source`s `shared_constants.sh` for the configuration and `run.sh` orchestrates everything. If the output directory does not exist, `run.sh` creates it and otherwise exits to prevent overwriting a previous experiment. Then it calls the following scripts in the order listed:
 
