@@ -10,7 +10,18 @@ These scripts require the following programs:
  - perl (to run the evaluation)
 
 # Usage
-Have a look at `Directory Configuration` in `src/shared_constants.sh` and make sure they point to existing directories, or ones that can be created.
+Have a look at `Directory Configuration` in `src/shared_constants.sh` and
+make sure they point to the correct locations:
+
+ - `expdir` main working directory.
+   All environments,
+   downloaded code,
+   logs,
+   and output
+   will be saved here by default.
+ - `configdir` directory with configuration files. By default it points to the `config` directory of this repository.
+ - `indir` directory with input files in NAF format
+ - `golddir` directory with gold data in CoNLL format
 
 Run `src/run.sh <tag>` to run an experiment with the version of the code tagged by `<tag>`. If all goes well, everything needed is downloaded automatically.
 

@@ -9,13 +9,9 @@ sourcedir="$(realpath `dirname "$0"`)" || exit 1
 
 expdir="$sourcedir/../../../../Experiments"
 configdir="$sourcedir/../config"
+
 indir="$expdir/../Data/SoNaR1-NAF"
 golddir="$expdir/../Data/SoNaR1-CoNLL-filled-uniqueyfied"
-
-formatconversionsdir=~/repos/FormatConversions
-scorerdir=~/repos/reference-coreference-scorers
-
-
 
 for arg in $@; do
     if [ "$arg" == '-h' -o "$arg" == '--help' ]; then
@@ -57,25 +53,28 @@ indir="`realpath "$indir"`" || exit 1
 
 golddir="`realpath "$golddir"`" || exit 1
 
-# It's okay if the following directories don't exist, but then the following
-# commands crash.
-# formatconversionsdir="`realpath "$formatconversionsdir"`" || exit 1
-# scorerdir="`realpath "$scorerdir"`" || exit 1
-
 # Derived names
 outdir="$expdir/$tag"
 nafdir="$outdir/NAF"
 conlldir="$outdir/CoNLL"
+skippedlog="$outdir/skipped_files.txt"
+infileslog="$outdir/input_files.txt"
 outfile="$outdir/system.conll"
 goldfile="$outdir/gold.conll"
 resultsfile="$outdir/results.txt"
-skippedlog="$outdir/skipped_files.txt"
-infileslog="$outdir/input_files.txt"
-expenv="$expdir/$tag-env"
-naf2conlldir="$formatconversionsdir/naf2conll"
-naf2conllenv="$naf2conlldir/env"
 
-# Data problems (for details, see:
+envdir="$expdir/environment"
+codedir="$expdir/code"
+
+expenv="$envdir/$tag"
+naf2conllenv="$envdir/naf2conll"
+
+formatconversionsdir="$codedir/FormatConversions"
+naf2conlldir="$formatconversionsdir/naf2conll"
+scorerdir="$codedir/reference-coreference-scorers"
+
+
+# Data problems. For details, see:
 # - `2018-06-20 - first test.md`
 # - `2018-06-19 - verify gold data/2018-06-20 - notes.md`
 ignoredfiles='

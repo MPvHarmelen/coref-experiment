@@ -6,6 +6,14 @@ detailedusage="Usage: $usage"
 sourcedir=`dirname $0` || exit 1
 source "$sourcedir/shared_constants.sh" || exit 1
 
+if [ ! -d "$envdir" ]; then
+    mkdir $envdir
+fi
+if [ ! -d "$codedir" ]; then
+    mkdir $codedir
+fi
+
+
 # multisieve_coreference environment
 if [ ! -d "$expenv" ]; then
     # Check the tag
