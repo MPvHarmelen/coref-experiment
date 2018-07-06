@@ -29,7 +29,7 @@ if [ ! -d "$expenv" ]; then
     echo Setting up experiment environment...
     virtualenv "$expenv" -p python3 > /dev/null || exit 1
     activate "$expenv" || exit 1
-    pip install --quiet "git+https://www.github.com/mpvharmelen/coref_draft@$tag" || exit 1
+    pip install --quiet "git+$corefrepo@$tag" || exit 1
     deactivate
 fi
 
