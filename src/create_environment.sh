@@ -33,22 +33,12 @@ if [ ! -d "$expenv" ]; then
     deactivate
 fi
 
-# naf2conll code
-if [ ! -d "$naf2conlldir" ]; then
-    echo Downloading NAF to CoNLL converter from $formatconversionsrepo...
-    git clone --quiet "$formatconversionsrepo" "$formatconversionsdir" || exit 1
-fi
-if [ ! -d "$naf2conlldir" ]; then
-    errcho ERROR: Failed to download the code for NAF2CoNLL conversion.
-    errcho $naf2conll is probably not a direct child of $formatconversionsdir
-fi
-
 # naf2conll environment
 if [ ! -d "$naf2conllenv" ]; then
     echo Setting up NAF to CoNLL converter environment...
     virtualenv "$naf2conllenv" -p python3 > /dev/null || exit 1
     activate "$naf2conllenv" || exit 1
-    pip install --quiet -r "$naf2conlldir/requirements.txt" || exit 1
+    pip install --quiet "$naf2conllpackage" || exit 1
     deactivate
 fi
 

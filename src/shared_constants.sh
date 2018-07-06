@@ -39,7 +39,7 @@ verifygold=no
 corefrepo=https://github.com/mpvharmelen/coref_draft.git
 scorerrepo=https://github.com/conll/reference-coreference-scorers.git
 scorertag=v8.01
-formatconversionsrepo=https://www.github.com/cltl/FormatConversions.git
+naf2conllpackage='git+https://github.com/cltl/FormatConversions.git#subdirectory=naf2conll'
 
 # Logging
 # loglevel=INFO
@@ -69,8 +69,6 @@ codedir="$expdir/code"
 expenv="$envdir/$tag"
 naf2conllenv="$envdir/naf2conll"
 
-formatconversionsdir="$codedir/FormatConversions"
-naf2conlldir="$formatconversionsdir/naf2conll"
 scorerdir="$codedir/reference-coreference-scorers"
 
 

@@ -14,9 +14,6 @@ fi
 
 ninfiles="`cat "$infileslog" | wc -l`" || exit 1
 
-# Run the experiment
-cd "$naf2conlldir" || exit 1
-
 progress=0
 for filename in `cat "$infileslog"`; do
     let progress++
