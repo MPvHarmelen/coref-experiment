@@ -36,8 +36,8 @@ verifygold=no
 # verifygold=yes
 
 # Repository
-corefrepo=https://www.github.com/mpvharmelen/coref_draft.git
-scorerrepo=https://www.github.com/conll/reference-coreference-scorers.git
+corefrepo=https://github.com/mpvharmelen/coref_draft.git
+scorerrepo=https://github.com/conll/reference-coreference-scorers.git
 scorertag=v8.01
 formatconversionsrepo=https://www.github.com/cltl/FormatConversions.git
 
