@@ -22,5 +22,5 @@ goldsize=`grep -P . $goldfile | wc -l`
 outsize=`grep -P . $outfile | wc -l`
 
 if [[ "$goldsize" != "$outsize" ]]; then
-    errcho WARNING: there are $goldsize lines in the gold data and $outsize lines in the output data.
+    errcho "WARNING: there are $goldsize lines in the gold data and $outsize lines in the output data. (Small difference are mostly caused by a difference in tokenisation and sentence boundaries.)"
 fi
