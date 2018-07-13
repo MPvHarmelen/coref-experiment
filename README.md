@@ -1,6 +1,9 @@
 # coref-experiment
 This collection of bash scripts can be used to run a coreference resolution experiment using the code from [coref_draft][], [naf2conll][] and the reference [CoNLL scorer][].
 
+By default the coreference resolution system is instructed to keep singleton references (if supported).
+Look for the `-s` option in `...-args.txt` files in the `config` directory to see when this is the case.
+
 # Requirements
 These scripts require the following programs:
 
