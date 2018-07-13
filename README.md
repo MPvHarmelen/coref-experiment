@@ -23,7 +23,12 @@ make sure they point to the correct locations:
  - `indir` directory with input files in NAF format
  - `golddir` directory with gold data in CoNLL format
 
-Run `src/run.sh <tag>` to run an experiment with the version of the code tagged by `<tag>`. If all goes well, everything needed is downloaded automatically.
+Choose a tag from one of the [releases][] and run:
+
+```bash
+src/run.sh <tag>
+```
+If all goes well, everything needed is downloaded automatically.
 
 You can run separate parts of the experiment manually by calling the script that does it.
 
@@ -59,3 +64,4 @@ Every script `source`s `shared_constants.sh` for the configuration and `run.sh` 
 [coref_draft]: https://www.github.com/mpvharmelen/coref_draft.git
 [naf2conll]: https://www.github.com/cltl/FormatConversions.git
 [CoNLL scorer]: https://www.github.com/conll/reference-coreference-scorers.git
+[releases]: https://github.com/mpvharmelen/coref_draft/releases
