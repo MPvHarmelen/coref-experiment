@@ -21,9 +21,14 @@ if [ ! -d "$expenv" ]; then
     tag_exists="`git ls-remote "$corefrepo" "$tag" | wc -l`"
 
     if [[ "$tag_exists" != "1" ]]; then
-        errcho Tag doesnt exist. Choose between the following tags:
-        git ls-remote "$corefrepo" >&2
-        exit 1
+        # Allow hashes
+        if [[ $tag =~ ^[0-9a-fA-F]+$ ]]; then
+            echo Tag not found, but it seems to be a hash of a commit
+        else
+            errcho Tag doesnt exist. Choose between the following tags:
+            git ls-remote "$corefrepo" >&2
+            exit 1
+        fi
     fi
 
     echo Setting up experiment environment...
