@@ -28,7 +28,15 @@ if [ ! -d "$expenv" ]; then
     echo Setting up experiment environment...
     virtualenv "$expenv" -p python3 > /dev/null || exit 1
     activate "$expenv" || exit 1
-    pip install --quiet "git+$corefrepo@$tag" || exit 1
+    pip install --quiet "git+$corefrepo@$tag" || (
+        errcho Available tags:
+        errcho Any branch name or commit hash, or one of the following tags:
+        git ls-remote "$corefrepo" >&2
+        errcho Cleaning up broken virtual environment...
+        deactivate
+        rm -r "$expenv"
+        exit 1
+    )
     deactivate
 fi
 
@@ -37,19 +45,27 @@ if [ ! -d "$naf2conllenv" ]; then
     echo Setting up NAF to CoNLL converter environment...
     virtualenv "$naf2conllenv" -p python3 > /dev/null || exit 1
     activate "$naf2conllenv" || exit 1
-    pip install --quiet "$naf2conllpackage" || exit 1
+    pip install --quiet "$naf2conllpackage" || (
+        errcho Cleaning up broken virtual environment...
+        deactivate
+        rm -r "$naf2conllenv"
+        exit 1
+    )
     deactivate
 fi
 
 # scorer
 if [ ! -d "$scorerdir" ]; then
     echo Downloading CoNLL scorer from $scorerrepo, version $scorertag...
-    # For later
-    origdir="`pwd`"
-    git clone --quiet "$scorerrepo" "$scorerdir" || exit 1
-    cd "$scorerdir" || exit 1
-    git checkout --quiet "$scorertag" || exit 1
-    # Set the verbosity to 0
-    echo "$scorerdiff" | patch --quiet -p1      # It's not fatal if this fails
-    cd "$origdir"
+    (
+        git clone --quiet "$scorerrepo" "$scorerdir" \
+        &&
+        cd "$scorerdir" \
+        &&
+        git checkout --quiet "$scorertag" \
+        &&
+        # It's not fatal if this fails
+        # Set the verbosity to 0
+        (echo "$scorerdiff" | patch --quiet -p1 || errcho Changing scorer verbosity level failed)
+    ) || exit 1
 fi
