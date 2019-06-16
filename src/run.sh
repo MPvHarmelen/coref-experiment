@@ -6,6 +6,8 @@ Usage: $usage
 
 Run an experiment of coref_draft.
 See https://github.com/mpvharmelen/coref_draft/releases for the available tags.
+Any description that git will understand when using \`git checkout <description>\`
+is accepted as "tag".
 "
 
 sourcedir="`dirname $0`" || exit 1

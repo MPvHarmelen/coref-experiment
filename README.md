@@ -26,7 +26,7 @@ make sure they point to the correct locations:
  - `indir` directory with input files in NAF format
  - `golddir` directory with gold data in CoNLL format
 
-Choose a tag from one of the [releases][] and run:
+Choose a tag from one of the [releases][] (or anything else that `git checkout` will understand, e.g. the name of a branch or the hash of a commit) and run:
 
 ```bash
 src/run.sh <tag>
