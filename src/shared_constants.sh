@@ -187,7 +187,7 @@ allfiles=`ls "$indir"`
 # '
 
 
-# Data problems. For details, see:
+# Data with problems. For details, see:
 # - `2018-06-20 - first test.md`
 # - `2018-06-19 - verify gold data/2018-06-20 - notes.md`
 ignoredfiles='
