@@ -4,6 +4,18 @@
 errcho(){ >&2 echo $@; }
 activate(){ source "$1/bin/activate"; }
 
+
+# Evaluation metric
+
+# muc     MUCScorer (Vilain et al, 1995)
+# bcub    B-Cubed (Bagga and Baldwin, 1998)
+# ceafm   CEAF (Luo et al, 2005) using mention-based similarity
+# ceafe   CEAF (Luo et al, 2005) using entity-based similarity
+# blanc   BLANC
+# all     uses all the metrics to score   (takes very long)
+metric=blanc
+
+
 # Directory configuration
 sourcedir="$(realpath `dirname "$0"`)" || exit 1
 

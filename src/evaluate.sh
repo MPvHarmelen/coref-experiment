@@ -13,6 +13,6 @@ if [[ -f "$resultsfile" ]]; then
 fi
 
 # Evaluate
-"$scorerdir/scorer.pl" all "$goldfile" "$outfile" > "$resultsfile" || exit 1
+"$scorerdir/scorer.pl" "$metric" "$goldfile" "$outfile" > "$resultsfile" || exit 1
 
 exit 0
