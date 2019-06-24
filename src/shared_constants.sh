@@ -74,10 +74,53 @@ scorerdir="$codedir/reference-coreference-scorers"
 
 # Make sure the same input files are used during the whole experiment,
 # because something may be adding files while the experiment is running.
-allfiles=`ls "$indir"`
+# allfiles=`ls "$indir"` || exit 1
 # allfiles='dpc-bmm-001081-nl-sen.naf'
 # allfiles='WR-P-P-G-0000000020.naf'
 # allfiles='very much gibberish'
+
+# 39 random files without problems
+allfiles='
+dpc-bal-001239-nl-sen.naf
+dpc-bmm-001091-nl-sen.naf
+dpc-bmm-001098-nl-sen.naf
+dpc-bmm-001105-nl-sen.naf
+dpc-cam-001280-nl-sen.naf
+dpc-dns-001066-nl-sen.naf
+dpc-eli-000944-nl-sen.naf
+dpc-eup-000017-nl-sen.naf
+dpc-fsz-000552-nl-sen.naf
+dpc-ind-001649-nl-sen.naf
+dpc-kok-001326-nl-sen.naf
+dpc-med-000680-nl-sen.naf
+dpc-qty-000936-nl-sen.naf
+dpc-riz-000460-nl-sen.naf
+dpc-rou-000981-nl-sen.naf
+dpc-svb-000431-nl-sen.naf
+dpc-vhs-000725-nl-sen.naf
+wiki1532.naf
+wiki5177.naf
+wiki-1928.naf
+WR-P-E-C-0000000036.naf
+WR-P-E-H-0000000009.naf
+WR-P-E-I-0000000011.naf
+WR-P-E-J-0000000014.naf
+WR-P-P-C-0000000038.naf
+WR-P-P-F-0000000006.naf
+WR-P-P-G-0000000020.naf
+WR-P-P-H-0000000001.naf
+WR-P-P-H-0000000086.naf
+WR-P-P-H-0000000090.naf
+WR-P-P-I-0000000010.naf
+WR-P-P-I-0000000014.naf
+WR-P-P-I-0000000128.naf
+WR-P-P-I-0000000262.naf
+WR-P-P-J-0000000012.naf
+WS-U-E-A-0000000001.naf
+WS-U-E-A-0000000002.naf
+WS-U-E-A-0000000003.naf
+WS-U-E-A-0000000004.naf
+'
 
 # 103 random files without problems
 # allfiles='
