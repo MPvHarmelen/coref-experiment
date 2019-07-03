@@ -74,6 +74,7 @@ infileslog="$outdir/input_files.txt"
 outfile="$outdir/system.conll"
 goldfile="$outdir/gold.conll"
 resultsfile="$outdir/results.txt"
+summaryfile="$outdir/summary.md"
 
 envdir="$expdir/environment"
 codedir="$expdir/code"

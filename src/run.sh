@@ -43,4 +43,7 @@ echo Evaluating...
 "$sourcedir/aggregate_output.sh" "$tag" || exit 1
 "$sourcedir/evaluate.sh" "$tag" || exit 1
 
+echo Summarizing...
+"$sourcedir/results_to_markdown.py" < "$resultsfile" > "$summaryfile" || exit 1
+
 exit 0
