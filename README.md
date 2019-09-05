@@ -63,6 +63,7 @@ Every script `source`s `shared_constants.sh` for the configuration and `run.sh` 
     By default `$verifygold` is `no`, but all documents that are not in `$ignoredfiles` in `shared_constants.sh` have been verified.
  1. `aggregate_output.sh` copies the content of all files in `$conlldir` into a single file `$outfile`.
  1. `evaluate.sh` runs the [CoNLL scorer][] and saves the output to `$resultsfile`.
+ 1. `results_to_markdown.py` summarizes the results in a nice Markdown table.
 
 [coref_draft]: https://www.github.com/mpvharmelen/coref_draft.git
 [naf2conll]: https://www.github.com/cltl/FormatConversions.git
