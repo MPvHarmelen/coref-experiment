@@ -66,7 +66,7 @@ indir="`realpath "$indir"`" || exit 1
 golddir="`realpath "$golddir"`" || exit 1
 
 # Derived names
-outdir="$expdir/$tag"
+outdir="$expdir/experiment-data/$tag"
 nafdir="$outdir/NAF"
 conlldir="$outdir/CoNLL"
 skippedlog="$outdir/skipped_files.txt"
