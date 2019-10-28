@@ -25,6 +25,10 @@ configdir="$sourcedir/../config"
 indir="$expdir/../Data/SoNaR1-NAF"
 golddir="$expdir/../Data/SoNaR1-CoNLL-filled-uniqueyfied"
 
+# The following is only used to read the content of commit messages
+# and only in `run_and_commit.sh` (for if you're as lazy as I am.)
+localcorefcopy="$sourcedir/../../coref_draft"
+
 for arg in $@; do
     if [ "$arg" == '-h' -o "$arg" == '--help' ]; then
         echo "$detailedusage"
@@ -75,6 +79,7 @@ outfile="$outdir/system.conll"
 goldfile="$outdir/gold.conll"
 resultsfile="$outdir/results.txt"
 summaryfile="$outdir/summary.md"
+commitmessagefile="$outdir/commit-message.md"
 
 envdir="$expdir/environment"
 codedir="$expdir/code"
