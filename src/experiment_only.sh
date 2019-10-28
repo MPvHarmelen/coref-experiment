@@ -1,13 +1,13 @@
-#! /bin/bash
+#! /bin/sh
 
 usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
 detailedusage="Usage: $usage"
 
 sourcedir=`dirname $0` || exit 1
-source "$sourcedir/shared_constants.sh" || exit 1
+. "$sourcedir/shared_constants.sh" || exit 1
 
 
-if [[ ! -s "$infileslog" ]]; then
+if [ ! -s "$infileslog" ]; then
     errcho No input files selected!
     exit 1
 fi

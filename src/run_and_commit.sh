@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
 detailedusage="
@@ -14,7 +14,7 @@ is accepted as "tag".
 
 sourcedir="`dirname $0`" || exit 1
 
-source "$sourcedir/shared_constants.sh" || exit 1
+. "$sourcedir/shared_constants.sh" || exit 1
 
 
 # Get the most recently added configuration files

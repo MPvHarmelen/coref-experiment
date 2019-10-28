@@ -1,10 +1,10 @@
-#! /bin/bash
+#! /bin/sh
 
 usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
 detailedusage="Usage: $usage"
 
 sourcedir=`dirname $0` || exit 1
-source "$sourcedir/shared_constants.sh" || exit 1
+. "$sourcedir/shared_constants.sh" || exit 1
 
 if [ ! -d "$envdir" ]; then
     mkdir $envdir
@@ -20,7 +20,7 @@ if [ ! -d "$expenv" ]; then
     echo Verifying tag...
     tag_exists="`git ls-remote "$corefrepo" "$tag" | wc -l`"
 
-    if [[ "$tag_exists" != "1" ]]; then
+    if [ "$tag_exists" != "1" ]; then
         # Fingers crossed and hope that git-checkout will understand
         echo Tag not found, but I\'ll try to use it anyway.
     fi

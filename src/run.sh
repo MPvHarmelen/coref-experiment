@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
 detailedusage="
@@ -12,7 +12,7 @@ is accepted as "tag".
 
 sourcedir="`dirname $0`" || exit 1
 
-source "$sourcedir/shared_constants.sh" || exit 1
+. "$sourcedir/shared_constants.sh" || exit 1
 
 # Check the output directory
 if [ -d "$outdir" ]; then
@@ -34,7 +34,7 @@ echo Running experiment...
 "$sourcedir/experiment_only.sh" "$tag" || exit 1
 
 
-if [[ "$verifygold" == 'yes' ]]; then
+if [ "$verifygold" = 'yes' ]; then
     "$sourcedir/verify_gold.sh" "$tag" || exit 1
 fi
 

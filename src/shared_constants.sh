@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 # Functions
 errcho(){ >&2 echo $@; }
@@ -30,7 +30,7 @@ golddir="$expdir/../Data/SoNaR1-CoNLL-filled-uniqueyfied"
 localcorefcopy="$sourcedir/../../coref_draft"
 
 for arg in $@; do
-    if [ "$arg" == '-h' -o "$arg" == '--help' ]; then
+    if [ "$arg" = '-h' -o "$arg" = '--help' ]; then
         echo "$detailedusage"
         exit 0
     fi
@@ -39,7 +39,7 @@ done
 # Experiment tag (change to run different experiment)
 tag=$1
 
-if [[ -z "$tag" ]]; then
+if [ -z "$tag" ]; then
     errcho Please specify a tag to use.
     echo Usage: $usage
     exit 1
