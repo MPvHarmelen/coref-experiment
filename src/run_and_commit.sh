@@ -20,8 +20,8 @@ sourcedir="`dirname $0`" || exit 1
 # Get the most recently added configuration files
 echo "Copying configuration files..."
 prevtag=`git -C "$sourcedir" log -n 1 --format=oneline | cut -d' ' -f5` || exit 1
-prevnaf2conllconfig=${naf2conllconfig//$tag//$prevtag}
-prevmsc_args_file=${msc_args_file//$tag//$prevtag}
+prevnaf2conllconfig=${naf2conllconfig/$tag/$prevtag}
+prevmsc_args_file=${msc_args_file/$tag/$prevtag}
 
 # Copy the old files to the new place
 cp "$prevnaf2conllconfig" "$naf2conllconfig" || exit 1
