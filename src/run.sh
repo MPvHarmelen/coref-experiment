@@ -44,6 +44,6 @@ echo Evaluating...
 "$sourcedir/evaluate.sh" "$tag" || exit 1
 
 echo Summarizing...
-"$sourcedir/results_to_markdown.py" < "$resultsfile" > "$summaryfile" || exit 1
+"$sourcedir/summarize.sh" "$tag"
 
 exit 0
