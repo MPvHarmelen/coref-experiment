@@ -297,9 +297,25 @@ WR-P-E-I-0000041235.naf
 dpc-vla-001161-nl-sen.naf
 '
 
+# scorerdiff='
+# diff --git a/lib/CorScorer.pm b/lib/CorScorer.pm
+# index b6e1b68..397ad4d 100644
+# --- a/lib/CorScorer.pm
+# +++ b/lib/CorScorer.pm
+# @@ -61,7 +61,7 @@ print "version: " . $VERSION . " " . Cwd::realpath(__FILE__) . "\n";
+#  # 1.02 Corrected BCUB bug. It fails when the key file does not have any mention
+
+#  # global variables
+# -my $VERBOSE         = 2;
+# +my $VERBOSE         = '"$scorerverbosity"';
+#  my $HEAD_COLUMN     = 8;
+#  my $RESPONSE_COLUMN = -1;
+#  my $KEY_COLUMN      = -1;
+# '
+
 scorerdiff='
 diff --git a/lib/CorScorer.pm b/lib/CorScorer.pm
-index b6e1b68..397ad4d 100644
+index b6e1b68..599cdb2 100644
 --- a/lib/CorScorer.pm
 +++ b/lib/CorScorer.pm
 @@ -61,7 +61,7 @@ print "version: " . $VERSION . " " . Cwd::realpath(__FILE__) . "\n";
@@ -311,4 +327,21 @@ index b6e1b68..397ad4d 100644
  my $HEAD_COLUMN     = 8;
  my $RESPONSE_COLUMN = -1;
  my $KEY_COLUMN      = -1;
+@@ -371,11 +371,11 @@ sub IdentifMentions {
+         push(@remove, $i);
+                $main::repeated_mentions++;
+
+-               if ($main::repeated_mentions > 10)
+-               {
+-                       print STDERR "Found too many repeated mentions (> 10) in the response, so refusing to score. Please fix the output.\n";
+-                       exit 1;
+-               }
++               # if ($main::repeated_mentions > 10)
++               # {
++               #       print STDERR "Found too many repeated mentions (> 10) in the response, so refusing to score. Please fix the output.\n";
++               #       exit 1;
++               # }
+
+       }
+       elsif (defined($id{"$mention->[0],$mention->[1]"})
 '
