@@ -2,7 +2,7 @@
 
 # Functions
 errcho(){ >&2 echo $@; }
-activate(){ source "$1/bin/activate"; }
+activate(){ . "$1/bin/activate"; }
 
 
 # Evaluation metric

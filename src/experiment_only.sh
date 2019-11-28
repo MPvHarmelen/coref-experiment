@@ -16,7 +16,7 @@ ninfiles="`cat "$infileslog" | wc -l`" || exit 1
 
 progress=0
 for filename in `cat "$infileslog"`; do
-    let progress++
+    progress=$((progress + 1))
     echo $progress / $ninfiles: Calculating coreferences for $filename...
     activate "$expenv" || exit 1
     cat "$indir/$filename" | python -m multisieve_coreference -l $loglevel  `cat "$msc_args_file" 2> /dev/null` > "$nafdir/$filename" || exit 1
