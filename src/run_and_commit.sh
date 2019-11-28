@@ -1,6 +1,6 @@
 #! /bin/bash
 
-usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
+usage="`dirname $0` [ -h | --help ] <tag> [<previous-tag>]" || exit 1
 detailedusage="
 Usage: $usage
 
@@ -17,15 +17,24 @@ sourcedir="`dirname $0`" || exit 1
 . "$sourcedir/shared_constants.sh" || exit 1
 
 
-# Get the most recently added configuration files
-echo "Copying configuration files..."
-prevtag=`git -C "$sourcedir" log -n 1 --format=oneline | cut -d' ' -f5` || exit 1
-prevnaf2conllconfig=${naf2conllconfig/$tag/$prevtag}
-prevmsc_args_file=${msc_args_file/$tag/$prevtag}
+# Previous experiment tag
+prevtag=$1
+if [ -z "$prevtag" ]; then
+    prevtag=`git -C "$sourcedir" log -n 1 --format=oneline | cut -d' ' -f5` || exit 1
+fi
 
-# Copy the old files to the new place
-cp "$prevnaf2conllconfig" "$naf2conllconfig" || exit 1
-cp "$prevmsc_args_file" "$msc_args_file" || exit 1
+
+# Get the most recently added configuration files
+if [ $tag != $prevtag ]; then
+    echo "Copying configuration files..."
+    prevnaf2conllconfig=${naf2conllconfig/$tag/$prevtag}
+    prevmsc_args_file=${msc_args_file/$tag/$prevtag}
+
+    # Copy the old files to the new place
+    cp "$prevnaf2conllconfig" "$naf2conllconfig" || exit 1
+    cp "$prevmsc_args_file" "$msc_args_file" || exit 1
+fi
+
 
 # Run the experiment
 "$sourcedir/run.sh" "$tag" || exit 1
