@@ -58,15 +58,18 @@ for filename in $allfiles; do
         skipfile "$filename" || exit 1
 
     # Ignore if the gold is empty or non-existent
-    elif [ ! -s "$conllfile" ]; then
+    elif [ "$verifygold" != "no" -a ! -s "$conllfile" ]; then
         echo No gold for $filename, skipping
         skipfile "$filename" || exit 1
 
     # Add it to the input list
     else
-        cat "$conllfile" >> "$goldfile" \
-            && keepfile "$filename" \
-            || exit 1
+        cat "$conllfile" >> "$goldfile"
+        # if the gold related thing failed and we're not ignoring gold things
+        if [ $? -a "$verifygold" != "no" ]; then
+            exit 1
+        fi
+        keepfile "$filename" || exit 1
     fi
 done
 
