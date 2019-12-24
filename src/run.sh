@@ -44,6 +44,6 @@ echo Evaluating...
 "$sourcedir/evaluate.sh" "$tag" || exit 1
 
 echo Summarizing...
-"$sourcedir/summarize.sh" "$tag"
+"$sourcedir/summarize.sh" "$tag" || exit 1
 
 exit 0
