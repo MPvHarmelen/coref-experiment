@@ -18,10 +18,12 @@ sourcedir="`dirname $0`" || exit 1
 
 
 # Previous experiment tag
-prevtag=$1
-if [ -z "$prevtag" ]; then
-    prevtag=`git -C "$sourcedir" log -n 1 --format=oneline | cut -d' ' -f5` || exit 1
-fi
+prevtag=$2
+skips=0
+while [[ ! "$prevtag" =~ ^[a-f0-9]+$ ]]; do
+    prevtag=`git -C "$sourcedir" log -n 1 --skip=$skips --format=oneline | cut -d' ' -f5` || exit 1
+    skips=$((skips + 1))
+done
 
 
 # Get the most recently added configuration files
