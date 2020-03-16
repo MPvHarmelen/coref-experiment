@@ -1,6 +1,6 @@
 #! /bin/sh
 
-usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
+usage="`basename $0` [ -h | --help ] <tag>" || exit 1
 detailedusage="
 Usage: $usage
 

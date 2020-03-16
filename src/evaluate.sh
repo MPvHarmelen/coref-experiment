@@ -1,7 +1,7 @@
 #! /bin/sh
 # Evaluate only
 
-usage="`dirname $0` [ -h | --help ] <tag>" || exit 1
+usage="`basename $0` [ -h | --help ] <tag>" || exit 1
 detailedusage="Usage: $usage"
 
 sourcedir=`dirname $0` || exit 1
